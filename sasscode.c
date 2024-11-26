@@ -87,6 +87,23 @@ void modifier(){
 			}
 	while(choix!=1 && choix!=2);		} 
 }
+
+void supprimer(){
+		if(taille==0) {
+		printf(" il n est pas des taches !");
+		return;}
+		int indice,i;
+		printf("Entre l indice qui veux supprimer :");
+		scanf("%d",&indice);
+		if(indice<0 || indice>=taille)
+		  printf("L indice qui veux entre est introuvable !");
+        else{
+         for(i=indice;i<taille;i++)
+         pr[i]=pr[i+1];
+		 }
+		taille--;
+		printf(" suppremer avec succer");
+	}
 int main(){
 	int p;
     do {
@@ -103,9 +120,10 @@ int main(){
             case 1: ajouter(); break;
 	    case 2: Affichage(); break;
 	    case 3: modifier();break;
-            case 4: printf("Au revoir !\n"); break;
+	    case 4: supprimer();break;
+            case 5: printf("Au revoir !\n"); break;
             default: printf("Choix invalide.\n");
         }
-    } while (p != 5);
+    } while (p != 6);
 return 0;
 }
