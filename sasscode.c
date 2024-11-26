@@ -104,6 +104,31 @@ void supprimer(){
 		taille--;
 		printf(" suppremer avec succer");
 	}
+void filtrer() {
+    if (taille == 0) {
+        printf("Aucune tâche disponible.\n");
+        return;
+    }
+    char filtre[10];
+    printf("Entrez la priorité pour filtrer (high/low) : ");
+    scanf("%s", filtre);
+    int found = 0;
+    int i;
+    printf("\nTâches avec la priorité '%s' :\n", filtre);
+    for (i = 0; i < taille; i++) {
+        if (strcmp(pr[i].priorite, filtre) == 0) {
+            printf("Tâche %d :\n", i + 1);
+            printf("Votre titre est Titre de tache : %s\n", pr[i].titre);
+            printf("Votre Description de tache est : %s\n", pr[i].discription);
+            printf("Votre Date de chance : %02d/%02d/%04d\n", pr[i].date_decha.jour, pr[i].date_decha.mois, pr[i].date_decha.annee);
+            printf("  Priorité    : %s\n",pr[i].priorite);
+            found = 1;
+        }
+    }
+    if (!found) {
+        printf("Aucune tâche trouvée avec la priorité '%s'.\n", filtre);
+    }
+}
 int main(){
 	int p;
     do {
@@ -121,9 +146,10 @@ int main(){
 	    case 2: Affichage(); break;
 	    case 3: modifier();break;
 	    case 4: supprimer();break;
-            case 5: printf("Au revoir !\n"); break;
+	    case 5: filtrer();break;
+            case 6: printf("Au revoir !\n"); break;
             default: printf("Choix invalide.\n");
         }
-    } while (p != 6);
+    } while (p != 7);
 return 0;
 }
