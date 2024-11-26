@@ -38,6 +38,22 @@ void ajouter() {
 	}while(choix!=1 && choix!=2);
 	taille++;
 }
+void  Affichage(){
+	int i;
+	if(taille==0) {
+		printf(" il n est pas des taches !");
+		return;
+	}
+	for (i=0;i<taille;i++){
+	printf("\nVotre titre  de tache est : %s\n",pr[i].titre);
+	printf("Votre discription de tache est : %s\n",pr[i].discription);
+	printf("Votre date dechance  de tache est : \n");
+	printf("Le jour de tache  est  :%d\n",pr[i].date_decha.jour);
+	printf("Le mois de tache est :%d\n",pr[i].date_decha.mois);
+	printf("L annee  de tache est :%d\n",pr[i].date_decha.annee);
+	printf("Votre priorite  de tache est :%s\n",pr[i].priorite);
+	}
+}
 int main(){
 	int p;
     do {
@@ -52,10 +68,10 @@ int main(){
         scanf("%d", &p);
         switch (p) {
             case 1: ajouter(); break;
-            case 2: printf("Au revoir !\n"); break;
+	    case 2: Affichage(); break;
+            case 3: printf("Au revoir !\n"); break;
             default: printf("Choix invalide.\n");
         }
-    } while (p != 3);
+    } while (p != 4);
 return 0;
-
 }
