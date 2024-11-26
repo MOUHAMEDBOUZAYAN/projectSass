@@ -54,6 +54,39 @@ void  Affichage(){
 	printf("Votre priorite  de tache est :%s\n",pr[i].priorite);
 	}
 }
+void modifier(){
+ 	if(taille==0) {
+		printf(" il n est pas des taches !");
+		return;}
+	int indice;
+	int choix ;
+	printf("enter indice de tache qui veux modifier :  ");
+	scanf("%d",&indice);
+	if(indice<0 || indice>taille){
+		printf("indice invalide !");
+	}else{	
+		printf("Enter nouveau titre de tache (actuel : %s) :",pr[indice].titre);
+		scanf("%s",pr[indice].titre);
+		printf("Enter nouveau discription de tache (actuel : %s) :",pr[indice].discription);
+		scanf("%s",pr[indice].discription);
+		printf("Entre le nouveau date dechance de tache (actuel :) \n:");
+		printf(" Entrer le nouveau jour dechance de tache (actuel : %d) :",pr[indice].date_decha.jour);
+		scanf("%d",&pr[indice].date_decha.jour);
+		printf(" Entrer le nouveau mois dechance de tache (actuel : %d) :",pr[indice].date_decha.mois);
+		scanf("%d",&pr[indice].date_decha.mois);
+		printf(" Entre le nouveau annee dechance de tache (actuel : %d) :",pr[indice].date_decha.annee);
+		scanf("%d",&pr[indice].date_decha.annee);
+			do{
+		printf("Enter la priorite (1-high 2-low):");
+		scanf("%d",&choix);
+		switch(choix){
+			case 1 : strcpy(pr[indice].priorite,"high");break;
+			case 2 : strcpy(pr[indice].priorite,"low");break;
+			default : printf("choix invalide !");
+				}
+			}
+	while(choix!=1 && choix!=2);		} 
+}
 int main(){
 	int p;
     do {
@@ -69,9 +102,10 @@ int main(){
         switch (p) {
             case 1: ajouter(); break;
 	    case 2: Affichage(); break;
-            case 3: printf("Au revoir !\n"); break;
+	    case 3: modifier();break;
+            case 4: printf("Au revoir !\n"); break;
             default: printf("Choix invalide.\n");
         }
-    } while (p != 4);
+    } while (p != 5);
 return 0;
 }
